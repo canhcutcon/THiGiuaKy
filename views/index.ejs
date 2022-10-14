@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+    <div>
+        <div class="form">
+            <form action="/" method="post" enctype="multipart/form-data">
+                <label for="fname">Mã sinh viên</label>
+                <input type="text" name="ma_sv" placeholder="Nhập mã sinh viên" />
+
+                <label for="lname">Tên sinh viên</label>
+                <input type="text" name="ten_sv" placeholder="Nhập tên sinh viên" />
+
+                <div>
+                    <label for="ngaySinh">Ngày sinh</label>
+                    <input type="date" name="ngaySinh" placeholder="ngày sinh" />
+                </div>
+
+                <label for="lname">Lớp</label>
+                <input type="text" name="lop_sv" placeholder="Nhập tên sinh viên" />
+
+                <label for="image">Hình ảnh Sinh Viên</label>
+                <input type="file" name="image" />
+
+                <input type="submit" value="Thêm sinh viên" />
+            </form>
+        </div>
+        <table id="customers">
+            <tr>
+                <th>STT</th>
+                <th>Mã sinh viên </th>
+                <th>
+                    Tên sinh viên
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th>
+                    Lớp
+                </th>
+                <th>
+                    Hình Ảnh
+                </th>
+                <th>
+                    Hành động
+                </th>
+            </tr>
+            <% for(let i=0; i<data.length; i++){ %>
+                <tr>
+                    <td>
+                        <p>
+                            <%=i + 1%>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%=data[i].ma_sv%>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%=data[i].ten_sv%>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%=data[i].ngaySinh%>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%=data[i].lop_sv%>
+                        </p>
+                    </td>
+                    <td>
+                        <img src="<%=data[i].image_url%>" alt="">
+                    </td>
+                    <td>
+                        <form action="/delete" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="ma_sv" value="<%=data[i].ma_sv%>">
+                            <input type="submit" value="Xoá sinh viên" />
+                        </form>
+                    </td>
+                </tr>
+                <%}%>
+        </table>
+    </div>
+</body>
+
+</html>
